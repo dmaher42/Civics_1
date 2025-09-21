@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Vibe vs. The Text: Australia's Constitution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .activity-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+        .activity-card:hover {
+            transform: translateY(-5px);
+        }
+        textarea {
+            resize: vertical;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+
+        <!-- Header -->
+        <header class="text-center mb-10 md:mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-2">🏛️ The Vibe vs. The Text</h1>
+            <p class="text-lg md:text-xl text-gray-600">Exploring Australia's Constitution</p>
+        </header>
+
+        <!-- Introduction -->
+        <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-6 rounded-lg mb-12">
+            <h2 class="font-bold text-xl mb-2">Welcome!</h2>
+            <p>Ever wonder what a country's rulebook should look like? We often have a "vibe" or a feeling about what a constitution is for—protecting rights, outlining big ideas, and defining who we are. But how does that vibe match up with the actual words written in Australia's Constitution from 1901? Let's investigate together.</p>
+        </div>
+
+        <!-- Activity 1: Big Paper -->
+        <div id="activity-1" class="activity-card">
+            <div class="flex items-start">
+                <div class="text-3xl font-bold text-blue-500 mr-4">1</div>
+                <div>
+                    <h2 class="text-2xl font-bold mb-3">The "Big Paper" Brainstorm 🤔</h2>
+                    <p class="mb-4">This is a <span class="font-semibold">silent conversation</span>. Your task is to brainstorm what you think a constitution *should* contain. What are the essential ingredients for a country's most important document?</p>
+                    <h3 class="font-semibold mb-2">Instructions:</h3>
+                    <ol class="list-decimal list-inside space-y-2 mb-4 text-gray-700">
+                        <li>Open our class collaborative whiteboard.</li>
+                        <li>Silently, add your ideas using digital sticky notes. Think about purpose, rules for government, rights, and values.</li>
+                        <li>Read and respond to your classmates' ideas by drawing connecting lines or adding comments on new notes.</li>
+                        <li>Remember, <span class="font-semibold">no talking!</span> All communication happens on the Big Paper.</li>
+                    </ol>
+                    <a href="#" target="_blank" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors">
+                        Go to Collaborative Whiteboard &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity 2: Unpacking the Real Deal -->
+        <div id="activity-2" class="activity-card">
+            <div class="flex items-start">
+                <div class="text-3xl font-bold text-green-500 mr-4">2</div>
+                <div>
+                    <h2 class="text-2xl font-bold mb-3">Unpacking the Real Deal 🎬</h2>
+                    <p class="mb-4">Now, let's see what's actually in the Australian Constitution. Watch this video from the Parliamentary Education Office (PEO) and listen for five key concepts.</p>
+                    
+                    <!-- Video Embed -->
+                    <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden mb-6 border">
+                        <iframe src="https://www.youtube.com/embed/pISs_11c_tQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
+                    </div>
+
+                    <h3 class="text-xl font-bold mb-4">Five-Finger Summaries 🖐️</h3>
+                    <p class="mb-6">After watching, briefly explain each concept in your own words in the boxes below.</p>
+                    
+                    <!-- Summaries Form -->
+                    <div class="space-y-6">
+                        <div>
+                            <label for="separation-powers" class="block text-md font-medium text-gray-700 mb-1">Separation of Powers:</label>
+                            <textarea id="separation-powers" rows="3" class="w-full p-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+                        </div>
+                        <div>
+                            <label for="division-powers" class="block text-md font-medium text-gray-700 mb-1">Division of Powers:</label>
+                            <textarea id="division-powers" rows="3" class="w-full p-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+                        </div>
+                        <div>
+                            <label for="rule-of-law" class="block text-md font-medium text-gray-700 mb-1">The Rule of Law:</label>
+                            <textarea id="rule-of-law" rows="3" class="w-full p-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+                        </div>
+                        <div>
+                            <label for="rep-gov" class="block text-md font-medium text-gray-700 mb-1">Representative & Responsible Government:</label>
+                            <textarea id="rep-gov" rows="3" class="w-full p-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+                        </div>
+                        <div>
+                            <label for="rights" class="block text-md font-medium text-gray-700 mb-1">Rights:</label>
+                            <textarea id="rights" rows="3" class="w-full p-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Activity 3: Vibe vs. Text Showdown -->
+        <div id="activity-3" class="activity-card">
+            <div class="flex items-start">
+                <div class="text-3xl font-bold text-purple-500 mr-4">3</div>
+                <div>
+                    <h2 class="text-2xl font-bold mb-3">Vibe vs. Text Showdown ⚖️</h2>
+                    <p class="mb-4">Time to compare! Look back at our "Big Paper" brainstorm and then think about what you learned from the video. Let's reflect on the differences between the constitution we imagined and the one Australia actually has.</p>
+                    
+                    <h3 class="font-semibold mb-2">Guiding Questions for Reflection:</h3>
+                    <ul class="list-disc list-inside space-y-3 text-gray-700">
+                        <li><span class="font-semibold">What's Missing?</span> Look at the "Big Paper." What ideas did your class have that are <span class="font-bold">not</span> mentioned in the video about the Australian Constitution?</li>
+                        <li><span class="font-semibold">What's Surprising?</span> What was in the video that you <span class="font-bold">didn't</span> expect? Were you surprised by how much of it is about the mechanics of government?</li>
+                        <li><span class="font-semibold">Why the Difference?</span> Why do you think there's a gap between the "vibe" of what we expect and the actual text? Consider when it was written (1901) and its main purpose at the time.</li>
+                    </ul>
+                     <p class="mt-4 bg-purple-100 border-l-4 border-purple-500 text-purple-800 p-4 rounded-md">Share your final thoughts on our class discussion forum!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resources -->
+        <div class="mt-16">
+            <h2 class="text-2xl font-bold text-center mb-6">📚 Resources</h2>
+            <div class="bg-gray-100 p-6 rounded-lg border">
+                <ul class="space-y-3">
+                    <li><strong>Video:</strong> <a href="https://peo.gov.au/understand-our-parliament/how-parliament-works/the-australian-constitution/the-australian-constitution-video/" target="_blank" class="text-blue-600 hover:underline">PEO: The Australian Constitution</a></li>
+                    <li><strong>Strategy:</strong> <a href="https://www.facinghistory.org/resource-library/big-paper" target="_blank" class="text-blue-600 hover:underline">Facing History & Ourselves: Big Paper - Silent Conversation</a></li>
+                    <li><strong>Full Text:</strong> <a href="https://www.aph.gov.au/About_Parliament/Senate/Powers_practice_n_procedures/Constitution" target="_blank" class="text-blue-600 hover:underline">The Australian Constitution (Full Text)</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center mt-12 text-gray-500">
+            <p>&copy; 2024 Your Classroom Name. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>

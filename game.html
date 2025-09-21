@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Constitution Game</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 flex items-center justify-center min-h-screen p-4">
+
+  <div id="game" class="max-w-xl w-full bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
+    <h1 class="text-2xl font-bold text-center mb-6">⚖️ Constitution Game</h1>
+    
+    <!-- Question -->
+    <div id="question" class="text-lg font-medium text-center mb-4"></div>
+    
+    <!-- Answer buttons -->
+    <div class="flex justify-center gap-4 mb-4">
+      <button onclick="answer('vibe')" 
+        class="px-4 py-2 rounded-lg bg-purple-600 text-white font-semibold hover:opacity-90">
+        Vibe
+      </button>
+      <button onclick="answer('text')" 
+        class="px-4 py-2 rounded-lg bg-green-600 text-white font-semibold hover:opacity-90">
+        Text
+      </button>
+    </div>
+    
+    <!-- Feedback -->
+    <div id="feedback" class="text-center text-sm mb-4"></div>
+    
+    <!-- Score + Next -->
+    <div class="flex justify-between items-center">
+      <div id="score" class="font-semibold text-gray-700"></div>
+      <button id="nextBtn" onclick="nextQuestion()" 
+        class="hidden px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:opacity-90">
+        Next →
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      { q: "The Prime Minister is mentioned in the Constitution.", a: "vibe", exp: "The Constitution does not mention the PM — it mostly covers Parliament and the Crown." },
+      { q: "The Constitution sets out rules for dividing power between the states and federal government.", a: "text", exp: "Yes — division of powers is a core part of the document." },
+      { q: "Environmental protection is a key principle in the Constitution.", a: "vibe", exp: "No — the 1901 text doesn’t include environment or climate references." },
+      { q: "It establishes the High Court of Australia.", a: "text", exp: "Correct — the Constitution creates the High Court and its role." },
+      { q: "It includes a Bill of Rights protecting free speech.", a: "vibe", exp: "No general Bill of Rights exists — only a few limited rights are in the text." }
+    ];
+    
+    let current = 0, score = 0;
+    const qEl = document.getElementById("question");
+    const fEl = document.getElementById("feedback");
+    const sEl = document.getElementById("score");
+    const nextBtn = document.getElementById("nextBtn");
+    
+    function loadQuestion() {
+      const q = questions[current];
+      qEl.textContent = q.q;
+      fEl.textContent = "";
+      nextBtn.classList.add("hidden");
+      sEl.textContent = `Score: ${score}/${current}`;
+    }
+    
+    function answer(choice) {
+      const q = questions[current];
+      if (choice === q.a) {
+        score++;
+        fEl.innerHTML = `<span class="text-green-600 font-bold">✔ Correct!</span> ${q.exp}`;
+      } else {
+        fEl.innerHTML = `<span class="text-red-600 font-bold">✘ Incorrect.</span> ${q.exp}`;
+      }
+      nextBtn.classList.remove("hidden");
+      sEl.textContent = `Score: ${score}/${current+1}`;
+    }
+    
+    function nextQuestion() {
+      current++;
+      if (current < questions.length) {
+        loadQuestion();
+      } else {
+        qEl.textContent = "Game Over! 🎉";
+        fEl.textContent = `Your final score is ${score}/${questions.length}.`;
+        nextBtn.textContent = "Play Again";
+        nextBtn.onclick = restart;
+      }
+    }
+    
+    function restart() {
+      current = 0; score = 0;
+      nextBtn.textContent = "Next →";
+      nextBtn.onclick = nextQuestion;
+      loadQuestion();
+    }
+    
+    loadQuestion();
+  </script>
+</body>
+</html>

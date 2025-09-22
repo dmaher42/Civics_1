@@ -1,133 +1,697 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Vibe vs. The Text: Australia's Constitution</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Vibe vs. The Text: Australia's Constitution</title>
+  <meta name="description" content="Class activity pack + game + whiteboard: explore the 'vibe' vs the actual text of Australia's Constitution." />
+
+  <!-- Fonts & Tailwind (no build step) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        container: { center: true, padding: '1rem' },
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'Segoe UI', 'Roboto', 'sans-serif'] },
+          colors: {
+            brand: {50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e40af',900:'#1e3a8a'}
+          },
+          boxShadow: { soft: '0 10px 30px rgba(2, 6, 23, 0.08)' }
         }
-        .activity-card {
-            background-color: white;
-            border-radius: 0.75rem;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            border: 1px solid #e5e7eb;
-        }
-    </style>
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+    .lift { transition: transform .18s ease, box-shadow .18s ease; }
+    .lift:hover { transform: translateY(-4px); box-shadow: 0 24px 40px rgba(2,6,23,.12); }
+    @media (prefers-reduced-motion: reduce) { .lift { transition: none; } }
+    .activity-card{background-color:rgba(255,255,255,.9);border-radius:1rem;padding:1.5rem;margin-bottom:1.25rem;box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);border:1px solid rgba(226,232,240,1)}
+    .dark .activity-card{background-color:rgba(2,6,23,.7);border-color:#1f2937}
+    /* Whiteboard grid background helper */
+    .grid-bg{
+      background-image:
+        linear-gradient(to right, rgba(100,116,139,.2) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(100,116,139,.2) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-slate-800 antialiased dark:bg-slate-950 dark:text-slate-100">
+  <!-- Skip link -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 bg-brand-600 text-white px-3 py-2 rounded-lg">Skip to content</a>
 
-    <div class="container mx-auto px-4 py-8 md:py-12">
+  <!-- Top ribbon -->
+  <div class="bg-gradient-to-r from-brand-600 to-brand-400 text-white text-sm">
+    <div class="container py-2 text-center">Whiteboard fixed: opens in Microsoft Whiteboard; built-in canvas supports background PNG + export.</div>
+  </div>
 
-        <!-- Header -->
-        <header class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">🏛️ The Vibe vs. The Text</h1>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Exploring Australia's Constitution</p>
-        </header>
-
-        <!-- Introduction -->
-        <div class="max-w-3xl mx-auto mb-12">
-            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                <h2 class="text-2xl font-bold mb-4 text-center">What's the "Vibe" of the Constitution?</h2>
-                <p class="mb-4 text-gray-700">We often have a "vibe" or a feeling about what a country's most important document should do. For many, it's about fairness and big ideas, like in this classic clip from 'The Castle'.</p>
-                <!-- YouTube Embed -->
-                <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden border">
-                    <iframe src="https://www.youtube.com/embed/97IiPli_uXw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
-                </div>
-                <p class="mt-4 text-gray-700">But how does that vibe match up with the actual words written in Australia's Constitution from 1901? Let's investigate.</p>
-            </div>
-        </div>
-
-        <!-- Activity 1: Big Paper -->
-        <div id="activity-1" class="activity-card">
-            <div class="flex items-start">
-                <div class="text-3xl font-bold text-blue-500 mr-4">1</div>
-                <div>
-                    <h2 class="text-2xl font-bold mb-3">The "Big Paper" Brainstorm 🤔</h2>
-                    <p class="mb-4 text-lg">Let's start with the big question: <strong>What do you think should be in a constitution?</strong></p>
-                    <p class="mb-4 bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg">Think of it this way: a constitution is like a rule book for a country. It sets out the most important rules for how the government can act and how people should be treated.</p>
-                    <h3 class="font-semibold mb-2">Instructions:</h3>
-                    <ol class="list-decimal list-inside space-y-2 mb-4 text-gray-700">
-                        <li>Using the whiteboard below, silently brainstorm your ideas for this "rule book."</li>
-                        <li>Add your ideas using digital sticky notes. Think about: What are the most important rules for treating people fairly? What should the government be allowed (and not allowed) to do? What rights should be protected?</li>
-                        <li>Read your classmates' ideas. You can respond by drawing lines to connect ideas or by adding a new note with a comment or question.</li>
-                        <li>Remember, <span class="font-semibold">no talking!</span> All communication happens on the Big Paper.</li>
-                    </ol>
-                    <!-- Embedded Miro Board -->
-                    <div class="h-[600px] rounded-lg overflow-hidden border">
-                        <iframe src="https://miro.com/app/live-embed/uXjVJFUyLhE=/?embedMode=view_only_without_ui&embedId=734789977828" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen class="w-full h-full"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Activity 2: Unpacking the Real Deal -->
-        <div id="activity-2" class="activity-card">
-            <div class="flex items-start">
-                <div class="text-3xl font-bold text-green-500 mr-4">2</div>
-                <div>
-                    <h2 class="text-2xl font-bold mb-3">Unpacking the Real Deal 🎬</h2>
-                    <p class="mb-4">Now, let's see what's actually in the Australian Constitution. Watch this video from the Parliamentary Education Office (PEO). As you watch, listen for five key concepts.</p>
-                    <!-- PEO Video Embed -->
-                    <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden border mb-6 bg-black">
-                         <video controls class="w-full h-full">
-                            <source src="https://aphref.aph.gov.au/senate/Video/PEO/PEO-The-Constitution.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                         </video>
-                    </div>
-
-                    <h3 class="text-xl font-bold mb-3">Five-Finger Summaries 🖐️</h3>
-                    <p class="mb-4">After watching, prepare a short summary for the five key principles mentioned in the video. Be ready to share your explanations of each concept in a class discussion.</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-gray-100 p-4 rounded-lg"><strong>Separation of Powers</strong></div>
-                        <div class="bg-gray-100 p-4 rounded-lg"><strong>Division of Powers</strong></div>
-                        <div class="bg-gray-100 p-4 rounded-lg"><strong>The Rule of Law</strong></div>
-                        <div class="bg-gray-100 p-4 rounded-lg"><strong>Representative & Responsible Government</strong></div>
-                        <div class="bg-gray-100 p-4 rounded-lg"><strong>Rights in the Constitution</strong></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Activity 3: Vibe vs. Text Showdown -->
-        <div id="activity-3" class="activity-card">
-            <div class="flex items-start">
-                <div class="text-3xl font-bold text-purple-500 mr-4">3</div>
-                <div>
-                    <h2 class="text-2xl font-bold mb-3">Vibe vs. Text Showdown ⚖️</h2>
-                    <p class="mb-4">It's time to compare. Look back at our "Big Paper" brainstorm from Activity 1 and then think about what you learned from the video in Activity 2.</p>
-                    <h3 class="font-semibold mb-2">Guiding Questions for Reflection:</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
-                        <li><strong>What's Missing?</strong> Look at the "Big Paper." What ideas did your class have that are <strong>not</strong> mentioned in the video about the Australian Constitution? (e.g., a bill of rights, mention of a Prime Minister, environmental protection).</li>
-                        <li><strong>What's Surprising?</strong> What was in the video that you <strong>didn't</strong> expect? Were you surprised by how much of it is about the mechanics of government (like a "rulebook for politicians")?</li>
-                        <li><strong>Why the Difference?</strong> Why do you think there's a gap between the "vibe" of what we expect a constitution to be and the actual text of Australia's? Consider when it was written (1901) and what its main purpose was at the time (uniting six British colonies).</li>
-                    </ul>
-                    <p class="mt-4 bg-purple-50 border-l-4 border-purple-400 p-4 rounded-r-lg">Use your answers to these questions to write a concluding paragraph that summarizes the main differences between the 'vibe' you expected and the 'text' you discovered.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Resources -->
-        <footer class="text-center mt-12">
-            <h2 class="text-xl font-bold mb-4">📚 Resources</h2>
-            <div class="flex justify-center space-x-4 text-blue-600 hover:text-blue-800">
-                 <a href="https://peo.gov.au/understand-our-parliament/how-parliament-works/the-australian-constitution/the-australian-constitution-video/" target="_blank">PEO Video Page</a>
-                <span class="text-gray-400">|</span>
-                <a href="https://www.facinghistory.org/resource-library/big-paper" target="_blank">"Big Paper" Strategy</a>
-                <span class="text-gray-400">|</span>
-                <a href="https://peo.gov.au/understand-our-parliament/how-parliament-works/the-australian-constitution/the-constitution" target="_blank">Full Text of the Constitution</a>
-            </div>
-        </footer>
-
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-slate-900/70 border-b border-slate-200/60 dark:border-slate-800">
+    <div class="container flex h-16 items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="h-8 w-8 rounded-xl bg-brand-600"></div>
+        <span class="font-extrabold tracking-tight">Civics Toolkit</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#activity-1" class="hover:text-brand-600">Big Paper</a>
+        <a href="#activity-2" class="hover:text-brand-600">Real Deal</a>
+        <a href="#activity-3" class="hover:text-brand-600">Showdown</a>
+        <a href="#activity-4" class="hover:text-brand-600">Game</a>
+        <a href="#activity-5" class="hover:text-brand-600">Whiteboard</a>
+        <a href="#ms-whiteboard" class="hover:text-brand-600">Open in MS Whiteboard</a>
+        <a href="#resources" class="hover:text-brand-600">Resources</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button id="themeToggle" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Toggle dark mode">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M21.75 15.002A9.72 9.72 0 0 1 12.004 22C6.487 22 2 17.513 2 11.996 2 7.45 4.94 3.61 9.06 2.248a.75.75 0 0 1 .935.966 8.25 8.25 0 0 0 10.73 10.73.75.75 0 0 1 1.027.958Z"/></svg>
+        </button>
+        <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6"><path d="M3.75 5.25h16.5v1.5H3.75zM3.75 11.25h16.5v1.5H3.75zM3.75 17.25h16.5v1.5H3.75z"/></svg>
+        </button>
+      </div>
     </div>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200/60 dark:border-slate-800">
+      <div class="container py-3 grid gap-3">
+        <a href="#activity-1" class="py-2">Big Paper</a>
+        <a href="#activity-2" class="py-2">Real Deal</a>
+        <a href="#activity-3" class="py-2">Showdown</a>
+        <a href="#activity-4" class="py-2">Game</a>
+        <a href="#activity-5" class="py-2">Whiteboard</a>
+        <a href="#ms-whiteboard" class="py-2">Open in MS Whiteboard</a>
+        <a href="#resources" class="py-2">Resources</a>
+      </div>
+    </div>
+  </header>
 
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-white via-brand-50 to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950"></div>
+    <div class="container grid md:grid-cols-2 gap-10 py-14 md:py-20 items-center">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">🏛️ The Vibe vs. The Text</h1>
+        <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">Explore what people expect a constitution to be versus what the 1901 text actually says.</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#activity-1" class="inline-flex items-center rounded-xl bg-brand-600 px-5 py-3 text-white font-semibold shadow-soft hover:opacity-90">Start Activity</a>
+          <a href="#activity-4" class="inline-flex items-center rounded-xl bg-purple-600 px-5 py-3 text-white font-semibold shadow-soft hover:opacity-90">Play Game</a>
+          <a href="#activity-5" class="inline-flex items-center rounded-xl bg-slate-900 px-5 py-3 text-white font-semibold shadow-soft hover:opacity-90 dark:bg-slate-700">Open Whiteboard</a>
+        </div>
+      </div>
+      <div>
+        <div class="relative">
+          <div class="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-tr from-brand-200 to-brand-500 blur-3xl opacity-30"></div>
+          <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 p-2 shadow-soft backdrop-blur">
+            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop" alt="Students collaborating on civics activity" class="rounded-2xl"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="main" class="container px-4 md:px-0">
+    <!-- Intro -->
+    <section aria-labelledby="intro-title" class="max-w-3xl mx-auto mb-12">
+      <div class="bg-white/90 dark:bg-slate-900/70 p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-slate-800">
+        <h2 id="intro-title" class="text-2xl font-extrabold mb-4 text-center">What's the "Vibe" of the Constitution?</h2>
+        <p class="mb-4 text-slate-700 dark:text-slate-300">We often have a feeling about what a nation's most important document should do—fairness, rights, big principles. Watch this classic moment from <em>The Castle</em>.</p>
+        <div class="relative w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800">
+          <div class="pt-[56.25%]"></div>
+          <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/97IiPli_uXw" title="The Castle clip" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <p class="mt-4 text-slate-700 dark:text-slate-300">Then compare that vibe to the actual text of Australia's Constitution (1901). Let's investigate.</p>
+      </div>
+    </section>
+
+    <!-- Activity 1 -->
+    <section id="activity-1" class="activity-card">
+      <div class="flex items-start">
+        <div class="mr-4 shrink-0">
+          <div class="h-10 w-10 rounded-xl grid place-items-center bg-brand-100 text-brand-700 font-bold">1</div>
+        </div>
+        <div>
+          <h2 class="text-2xl font-extrabold mb-3">The "Big Paper" Brainstorm 🤔</h2>
+          <p class="mb-4 text-lg">Start with the big question: <strong>What should be in a constitution?</strong></p>
+          <p class="mb-4 bg-brand-50 border-l-4 border-brand-400 p-4 rounded-r-lg text-slate-700 dark:text-slate-300">Think of it as a country's rule book. It sets the highest rules for how government acts and how people are treated.</p>
+          <h3 class="font-semibold mb-2">Instructions</h3>
+          <ol class="list-decimal list-inside space-y-2 mb-4 text-slate-700 dark:text-slate-300">
+            <li>Use the whiteboard below to silently brainstorm your ideas.</li>
+            <li>Add digital sticky notes: key rules for fairness? limits on government? protected rights?</li>
+            <li>Read classmates' ideas and connect them with lines or comments.</li>
+            <li><span class="font-semibold">No talking</span>—all discussion happens on the Big Paper.</li>
+          </ol>
+          <!-- (Optional) Miro embed could go here if you use it -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Activity 2 -->
+    <section id="activity-2" class="activity-card">
+      <div class="flex items-start">
+        <div class="mr-4 shrink-0">
+          <div class="h-10 w-10 rounded-xl grid place-items-center bg-green-100 text-green-700 font-bold">2</div>
+        </div>
+        <div>
+          <h2 class="text-2xl font-extrabold mb-3">Unpacking the Real Deal 🎬</h2>
+          <p class="mb-4">Watch the Parliamentary Education Office video, then identify five key concepts.</p>
+          <div class="relative w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 mb-6 bg-black">
+            <video controls class="block w-full h-auto" preload="metadata">
+              <source src="https://aphref.aph.gov.au/senate/Video/PEO/PEO-The-Constitution.mp4#t=0.1" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <h3 class="text-xl font-extrabold mb-3">Five-Finger Summaries 🖐️</h3>
+          <p class="mb-4">Prepare a short summary for each concept.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="rounded-lg bg-slate-100 dark:bg-slate-800/60 p-4"><strong>Separation of Powers</strong></div>
+            <div class="rounded-lg bg-slate-100 dark:bg-slate-800/60 p-4"><strong>Division of Powers</strong></div>
+            <div class="rounded-lg bg-slate-100 dark:bg-slate-800/60 p-4"><strong>The Rule of Law</strong></div>
+            <div class="rounded-lg bg-slate-100 dark:bg-slate-800/60 p-4"><strong>Representative & Responsible Government</strong></div>
+            <div class="rounded-lg bg-slate-100 dark:bg-slate-800/60 p-4 md:col-span-2"><strong>Rights in the Constitution</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activity 3 -->
+    <section id="activity-3" class="activity-card">
+      <div class="flex items-start">
+        <div class="mr-4 shrink-0">
+          <div class="h-10 w-10 rounded-xl grid place-items-center bg-purple-100 text-purple-700 font-bold">3</div>
+        </div>
+        <div>
+          <h2 class="text-2xl font-extrabold mb-3">Vibe vs. Text Showdown ⚖️</h2>
+          <p class="mb-4">Compare your Big Paper ideas with what you learned from the video.</p>
+          <h3 class="font-semibold mb-2">Guiding Questions</h3>
+          <ul class="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300">
+            <li><strong>What's missing?</strong> Ideas from your class that are not in the video (e.g., bill of rights, PM mention, environment).</li>
+            <li><strong>What's surprising?</strong> Anything unexpected—how much is mechanics of government vs rights?</li>
+            <li><strong>Why the gap?</strong> Consider the 1901 context and the goal of uniting six colonies.</li>
+          </ul>
+          <p class="mt-4 bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-400 p-4 rounded-r-lg">Use your answers to write a concluding paragraph on the difference between the 'vibe' you expected and the 'text' you discovered.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activity 4: Game -->
+    <section id="activity-4" class="activity-card">
+      <div class="flex items-start">
+        <div class="mr-4 shrink-0">
+          <div class="h-10 w-10 rounded-xl grid place-items-center bg-indigo-100 text-indigo-700 font-bold">4</div>
+        </div>
+        <div class="w-full">
+          <h2 class="text-2xl font-extrabold mb-3">Constitution Game 🎮 — Vibe or Text?</h2>
+          <p class="mb-4">Decide whether each statement reflects the <strong>Vibe</strong> (popular expectation) or the actual <strong>Text</strong> of Australia's Constitution. Get instant feedback and track your score.</p>
+
+          <div id="game" class="max-w-2xl w-full bg-white dark:bg-slate-900 rounded-2xl shadow-soft p-6 border border-slate-200 dark:border-slate-800">
+            <h3 class="text-xl font-bold text-center mb-6">⚖️ Constitution Game</h3>
+            <!-- Controls injected by script (Easy Mode + Read Aloud + Vocab help) -->
+            <!-- Question -->
+            <div id="question" class="text-lg font-medium text-center mb-4"></div>
+            <!-- Answer buttons -->
+            <div class="flex justify-center gap-4 mb-4">
+              <button onclick="answer('vibe')" id="btnVibe" class="px-4 py-2 rounded-lg bg-purple-600 text-white font-semibold hover:opacity-90">Vibe</button>
+              <button onclick="answer('text')" id="btnText" class="px-4 py-2 rounded-lg bg-green-600 text-white font-semibold hover:opacity-90">Text</button>
+            </div>
+            <!-- Feedback -->
+            <div id="feedback" class="text-center text-sm mb-4 min-h-[1.5rem]"></div>
+            <!-- Score + Next -->
+            <div class="flex justify-between items-center">
+              <div id="score" class="font-semibold text-slate-700 dark:text-slate-300"></div>
+              <button id="nextBtn" onclick="nextQuestion()" class="hidden px-4 py-2 rounded-lg bg-brand-600 text-white font-semibold hover:opacity-90">Next →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activity 5: Built-in Whiteboard (with Background PNG support) -->
+    <section id="activity-5" class="activity-card">
+      <div class="flex items-start">
+        <div class="mr-4 shrink-0">
+          <div class="h-10 w-10 rounded-xl grid place-items-center bg-slate-100 text-slate-700 font-bold">5</div>
+        </div>
+        <div class="w-full">
+          <h2 class="text-2xl font-extrabold mb-3">Whiteboard ✏️</h2>
+          <p class="mb-4">Use this space to brainstorm “vibe” ideas, draw connections, or draft your concluding paragraph. Works with mouse, touch, and pen.</p>
+
+          <!-- Toolbar -->
+          <div class="flex flex-wrap gap-2 items-center mb-3">
+            <div class="inline-flex rounded-xl border border-slate-300 dark:border-slate-800 overflow-hidden">
+              <button id="toolPen" class="px-3 py-2 text-sm font-semibold bg-slate-100 dark:bg-slate-800">Pen</button>
+              <button id="toolEraser" class="px-3 py-2 text-sm">Eraser</button>
+            </div>
+
+            <label class="flex items-center gap-2 text-sm">
+              <span>Colour</span>
+              <input id="wbColor" type="color" value="#111827" class="h-9 w-9 p-1 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900">
+            </label>
+
+            <label class="flex items-center gap-2 text-sm">
+              <span>Thickness</span>
+              <input id="wbSize" type="range" min="1" max="30" value="5" class="w-40">
+              <span id="wbSizeVal" class="w-8 text-right">5</span>
+            </label>
+
+            <label class="inline-flex items-center gap-2 text-sm ml-auto">
+              <input id="wbGrid" type="checkbox" class="h-4 w-4 accent-brand-600">
+              <span>Grid</span>
+            </label>
+
+            <div class="flex gap-2">
+              <!-- Background tools -->
+              <input id="wbBgFile" type="file" accept="image/*" class="hidden">
+              <button id="wbBgBtn" class="px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 text-sm">Background…</button>
+              <button id="wbBgClear" class="px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 text-sm">Clear background</button>
+
+              <!-- Ink tools -->
+              <button id="wbUndo" class="px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 text-sm">Undo</button>
+              <button id="wbRedo" class="px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 text-sm">Redo</button>
+              <button id="wbClear" class="px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 text-sm">Clear</button>
+              <button id="wbSave" class="px-3 py-2 rounded-xl bg-brand-600 text-white text-sm">Save PNG</button>
+            </div>
+          </div>
+
+          <!-- Board -->
+          <div id="boardWrap" class="rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden bg-white dark:bg-slate-900">
+            <canvas id="whiteboard" class="block touch-none w-full" style="touch-action:none;"></canvas>
+          </div>
+
+          <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">
+            Tip: Export your Microsoft Whiteboard as PNG and load it with “Background…”, then students can annotate on top. “Save PNG” includes the background.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Microsoft Whiteboard: open externally (no embed, avoids CSP block) -->
+    <section id="ms-whiteboard" class="activity-card">
+      <div class="flex items-start">
+        <div class="mr-4 shrink-0">
+          <div class="h-10 w-10 rounded-xl grid place-items-center bg-blue-100 text-blue-700 font-bold">6</div>
+        </div>
+        <div class="w-full">
+          <h2 class="text-2xl font-extrabold mb-3">Open in Microsoft Whiteboard</h2>
+          <p class="mb-4">This opens the board in Microsoft Whiteboard (web or app). Students must be signed in with school accounts.</p>
+          <!-- Replace the href below with your actual Whiteboard share link -->
+          <a href="PASTE_YOUR_WHITEBOARD_SHARE_LINK_HERE" target="_blank" rel="noopener"
+             class="inline-flex items-center rounded-xl bg-brand-600 px-5 py-3 text-white font-semibold shadow hover:opacity-90">
+            🧩 Open Microsoft Whiteboard
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Resources / Footer -->
+  <footer id="resources" class="container text-center mt-12 mb-8">
+    <h2 class="text-xl font-extrabold mb-4">📚 Resources</h2>
+    <div class="flex flex-wrap justify-center gap-3">
+      <a class="inline-flex items-center rounded-xl bg-brand-600 px-4 py-2 text-white font-semibold shadow-soft hover:opacity-90" href="https://peo.gov.au/understand-our-parliament/how-parliament-works/the-australian-constitution/the-australian-constitution-video/" target="_blank" rel="noopener noreferrer">PEO Video Page</a>
+      <a class="inline-flex items-center rounded-xl border border-slate-300 dark:border-slate-700 px-4 py-2 font-semibold hover:bg-slate-50 dark:hover:bg-slate-800" href="https://www.facinghistory.org/resource-library/big-paper" target="_blank" rel="noopener noreferrer">“Big Paper” Strategy</a>
+      <a class="inline-flex items-center rounded-xl border border-slate-300 dark:border-slate-700 px-4 py-2 font-semibold hover:bg-slate-50 dark:hover:bg-slate-800" href="https://peo.gov.au/understand-our-parliament/how-parliament-works/the-australian-constitution/the-constitution" target="_blank" rel="noopener noreferrer">Full Text of the Constitution</a>
+    </div>
+    <p class="text-sm text-slate-500 dark:text-slate-400 mt-4">© <span id="year"></span> Civics Toolkit.</p>
+  </footer>
+
+  <!-- Core scripts -->
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Dark mode toggle (with persistence)
+    const toggle = document.getElementById('themeToggle');
+    const root = document.documentElement; const key = 'theme';
+    const saved = localStorage.getItem(key);
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      root.classList.add('dark');
+    }
+    if (toggle) toggle.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.setItem(key, root.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Footer year
+    const y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Game logic -->
+  <script>
+    // Constitution Game logic (Easy Mode + vocab help + read aloud)
+    (function(){
+      const easyQuestions = [
+        { q: "The Constitution names the Prime Minister.", a: "vibe", exp: "No. The words ‘Prime Minister’ are not in the Constitution." },
+        { q: "The Constitution splits powers between the national government and the states.", a: "text", exp: "Yes. It lists what the national Parliament can make laws about." },
+        { q: "The Constitution protects the environment.", a: "vibe", exp: "No. It doesn’t mention the environment or climate." },
+        { q: "The Constitution creates the High Court.", a: "text", exp: "Yes. It sets up the High Court." },
+        { q: "Australia has a big list of rights in the Constitution.", a: "vibe", exp: "No. There’s no general ‘Bill of Rights’." },
+        { q: "The Constitution lets Parliament make marriage laws.", a: "text", exp: "Yes. Marriage is one of the listed topics (powers)." },
+        { q: "The job ‘Prime Minister’ is a tradition, not written in the Constitution.", a: "text", exp: "Right. It’s a practice (a ‘convention’), not written in the words." }
+      ];
+
+      const standardQuestions = [
+        { q: "The Prime Minister is mentioned in the Constitution.", a: "vibe", exp: "The Constitution does not mention the PM — it mostly covers Parliament, the Crown and the courts." },
+        { q: "The Constitution sets out rules for dividing power between the states and federal government.", a: "text", exp: "Yes — division of powers is a core part of the document (for example, section 51 lists Commonwealth powers)." },
+        { q: "Environmental protection is a key principle in the Constitution.", a: "vibe", exp: "No — the 1901 text doesn’t include environment or climate references." },
+        { q: "It establishes the High Court of Australia.", a: "text", exp: "Correct — the Constitution creates the High Court and its role (Chapter III)." },
+        { q: "It includes a Bill of Rights protecting free speech.", a: "vibe", exp: "No general Bill of Rights exists — only a few limited rights are in the text." },
+        { q: "The Constitution allows the Commonwealth to make marriage laws.", a: "text", exp: "Yes — marriage is among the heads of power in section 51." }
+      ];
+
+      let current = 0, score = 0, useEasy = true;
+      const gameEl = document.getElementById('game');
+      const qEl = document.getElementById('question');
+      const fEl = document.getElementById('feedback');
+      const sEl = document.getElementById('score');
+      const nextBtn = document.getElementById('nextBtn');
+
+      // Control bar (Easy Mode + Read Aloud + Vocab help)
+      const controls = document.createElement('div');
+      controls.className = 'flex flex-wrap items-center justify-between gap-3 mb-4';
+      controls.innerHTML = `
+        <label class="inline-flex items-center gap-2 text-sm">
+          <input id="easyToggle" type="checkbox" class="h-4 w-4 accent-purple-600" checked>
+          <span>Easy Mode</span>
+        </label>
+        <button id="speakBtn" class="px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-sm">🔊 Read aloud</button>
+        <details class="rounded-lg border border-gray-200 px-3 py-2 text-sm">
+          <summary class="cursor-pointer font-semibold">Vocab help</summary>
+          <ul class="mt-2 list-disc list-inside space-y-1 text-gray-700">
+            <li><strong>Constitution:</strong> the country’s main rule book</li>
+            <li><strong>Parliament:</strong> the people who make national laws</li>
+            <li><strong>High Court:</strong> the top court in Australia</li>
+            <li><strong>Division of powers:</strong> who does what: national vs states</li>
+            <li><strong>Bill of Rights:</strong> a big list of rights (Australia doesn’t have a general one in the Constitution)</li>
+          </ul>
+        </details>`;
+      gameEl.prepend(controls);
+
+      const easyToggle = document.getElementById('easyToggle');
+      const speakBtn = document.getElementById('speakBtn');
+
+      const btnVibe = document.getElementById('btnVibe');
+      const btnText = document.getElementById('btnText');
+      if (btnVibe) btnVibe.textContent = '💡 Idea (Vibe)';
+      if (btnText) btnText.textContent = '📜 In the Constitution';
+
+      function activeSet(){ return useEasy ? easyQuestions : standardQuestions; }
+
+      function loadQuestion(){
+        const arr = activeSet();
+        const q = arr[current];
+        qEl.textContent = q.q;
+        fEl.textContent = '';
+        nextBtn.classList.add('hidden');
+        sEl.textContent = `Score: ${score}/${current}`;
+      }
+
+      window.answer = function(choice){
+        const arr = activeSet();
+        const q = arr[current];
+        if (choice === q.a) {
+          score++;
+          fEl.innerHTML = `<span class="text-green-600 font-bold">✔ Correct!</span> ${q.exp}`;
+        } else {
+          fEl.innerHTML = `<span class="text-red-600 font-bold">✘ Incorrect.</span> ${q.exp}`;
+        }
+        nextBtn.classList.remove('hidden');
+        sEl.textContent = `Score: ${score}/${current+1}`;
+      }
+
+      window.nextQuestion = function(){
+        const arr = activeSet();
+        current++;
+        if (current < arr.length) {
+          loadQuestion();
+        } else {
+          qEl.textContent = 'Game Over! 🎉';
+          fEl.textContent = `Your final score is ${score}/${arr.length}.`;
+          nextBtn.textContent = 'Play Again';
+          nextBtn.onclick = restart;
+        }
+      }
+
+      function restart(){
+        current = 0; score = 0;
+        nextBtn.textContent = 'Next →';
+        nextBtn.onclick = window.nextQuestion;
+        loadQuestion();
+      }
+
+      easyToggle.addEventListener('change', () => { useEasy = easyToggle.checked; restart(); });
+
+      function speak(text){
+        try {
+          if (!('speechSynthesis' in window)) return;
+          window.speechSynthesis.cancel();
+          const u = new SpeechSynthesisUtterance(text);
+          u.lang = 'en-AU';
+          window.speechSynthesis.speak(u);
+        } catch(e) { /* ignore */ }
+      }
+      speakBtn.addEventListener('click', () => { speak(qEl.textContent + '. ' + fEl.textContent); });
+
+      loadQuestion();
+    })();
+  </script>
+
+  <!-- Whiteboard logic (with Background PNG support) -->
+  <script>
+    (function(){
+      const canvas = document.getElementById('whiteboard');
+      const wrap = document.getElementById('boardWrap');
+
+      const toolPen = document.getElementById('toolPen');
+      const toolEraser = document.getElementById('toolEraser');
+      const color = document.getElementById('wbColor');
+      const size = document.getElementById('wbSize');
+      const sizeVal = document.getElementById('wbSizeVal');
+      const grid = document.getElementById('wbGrid');
+      const undoBtn = document.getElementById('wbUndo');
+      const redoBtn = document.getElementById('wbRedo');
+      const clearBtn = document.getElementById('wbClear');
+      const saveBtn = document.getElementById('wbSave');
+
+      // Background tools
+      const bgFile = document.getElementById('wbBgFile');
+      const bgBtn = document.getElementById('wbBgBtn');
+      const bgClear = document.getElementById('wbBgClear');
+      let bgImg = null; // Image object for export
+      let bgUrl = '';   // Object URL for CSS background
+
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
+      let drawing = false;
+      let last = { x: 0, y: 0 };
+      let erasing = false;
+
+      // History (ImageData stack)
+      const HISTORY_LIMIT = 50;
+      const history = [];
+      const future = [];
+
+      function pushHistory() {
+        try{
+          const snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          history.push(snapshot);
+          if (history.length > HISTORY_LIMIT) history.shift();
+          future.length = 0; // clear redo stack
+        }catch(e){/* ignore if offscreen */}
+      }
+
+      function restore(imgData){
+        if(!imgData) return;
+        ctx.putImageData(imgData, 0, 0);
+      }
+
+      // Device-pixel-ratio aware resize
+      function resizeCanvas(){
+        const dpr = Math.max(1, window.devicePixelRatio || 1);
+        const rect = wrap.getBoundingClientRect();
+        // Preserve contents
+        const temp = document.createElement('canvas');
+        temp.width = canvas.width;
+        temp.height = canvas.height;
+        temp.getContext('2d').drawImage(canvas, 0, 0);
+
+        canvas.width = Math.floor(rect.width * dpr);
+        canvas.height = Math.floor((rect.width * 0.6) * dpr); // ~16:10 height
+        canvas.style.width = rect.width + 'px';
+        canvas.style.height = Math.floor(rect.width * 0.6) + 'px';
+
+        ctx.setTransform(1,0,0,1,0,0);
+        ctx.scale(dpr, dpr);
+
+        // Redraw previous content scaled
+        if (temp.width && temp.height){
+          const prev = document.createElement('canvas');
+          prev.width = canvas.width;
+          prev.height = canvas.height;
+          const pctx = prev.getContext('2d');
+          pctx.drawImage(temp, 0, 0, prev.width, prev.height);
+          ctx.drawImage(prev, 0, 0);
+        }
+      }
+
+      function setTool(activeEraser){
+        erasing = activeEraser;
+        toolPen.classList.toggle('bg-slate-100', !erasing);
+        toolPen.classList.toggle('dark:bg-slate-800', !erasing);
+        toolEraser.classList.toggle('bg-slate-100', erasing);
+        toolEraser.classList.toggle('dark:bg-slate-800', erasing);
+      }
+
+      function getPos(e){
+        const rect = canvas.getBoundingClientRect();
+        const x = (e.clientX - rect.left);
+        const y = (e.clientY - rect.top);
+        return { x, y };
+      }
+
+      function stroke(from, to){
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+        ctx.lineWidth = parseFloat(size.value);
+        if (erasing) {
+          ctx.globalCompositeOperation = 'destination-out';
+        } else {
+          ctx.globalCompositeOperation = 'source-over';
+          ctx.strokeStyle = color.value;
+        }
+        ctx.beginPath();
+        ctx.moveTo(from.x, from.y);
+        ctx.lineTo(to.x, to.y);
+        ctx.stroke();
+      }
+
+      function pointerDown(e){
+        e.preventDefault();
+        canvas.setPointerCapture(e.pointerId);
+        drawing = true;
+        last = getPos(e);
+        pushHistory(); // snapshot before starting a stroke
+      }
+
+      function pointerMove(e){
+        if (!drawing) return;
+        const p = getPos(e);
+        stroke(last, p);
+        last = p;
+      }
+
+      function pointerUp(e){
+        if (!drawing) return;
+        drawing = false;
+        canvas.releasePointerCapture(e.pointerId);
+      }
+
+      // Controls
+      toolPen.addEventListener('click', ()=> setTool(false));
+      toolEraser.addEventListener('click', ()=> setTool(true));
+      setTool(false);
+
+      size.addEventListener('input', ()=> sizeVal.textContent = size.value);
+      sizeVal.textContent = size.value;
+
+      grid.addEventListener('change', ()=> wrap.classList.toggle('grid-bg', grid.checked));
+
+      clearBtn.addEventListener('click', ()=>{
+        pushHistory();
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+      });
+
+      undoBtn.addEventListener('click', ()=>{
+        if (!history.length) return;
+        const lastState = history.pop();
+        try {
+          const curr = ctx.getImageData(0,0,canvas.width,canvas.height);
+          future.push(curr);
+        } catch(e){}
+        restore(lastState);
+      });
+
+      redoBtn.addEventListener('click', ()=>{
+        if (!future.length) return;
+        try{
+          const curr = ctx.getImageData(0,0,canvas.width,canvas.height);
+          history.push(curr);
+        }catch(e){}
+        const state = future.pop();
+        restore(state);
+      });
+
+      // Background handling
+      bgBtn.addEventListener('click', () => bgFile.click());
+
+      bgFile.addEventListener('change', () => {
+        const file = bgFile.files && bgFile.files[0];
+        if (!file) return;
+        if (bgUrl) URL.revokeObjectURL(bgUrl);
+        bgUrl = URL.createObjectURL(file);
+        const img = new Image();
+        img.onload = () => {
+          bgImg = img;
+          canvas.style.backgroundImage = `url('${bgUrl}')`;
+          canvas.style.backgroundRepeat = 'no-repeat';
+          canvas.style.backgroundPosition = 'center';
+          canvas.style.backgroundSize = 'contain';
+        };
+        img.src = bgUrl;
+      });
+
+      bgClear.addEventListener('click', () => {
+        bgImg = null;
+        if (bgUrl) URL.revokeObjectURL(bgUrl);
+        bgUrl = '';
+        canvas.style.backgroundImage = 'none';
+      });
+
+      // Save includes background (if any)
+      saveBtn.addEventListener('click', ()=>{
+        const exportCanvas = document.createElement('canvas');
+        exportCanvas.width = canvas.width;
+        exportCanvas.height = canvas.height;
+        const ex = exportCanvas.getContext('2d');
+        // draw background first, preserving aspect via contain
+        if (bgImg) {
+          // Compute "contain" fit
+          const cw = exportCanvas.width, ch = exportCanvas.height;
+          const ir = bgImg.width / bgImg.height, cr = cw / ch;
+          let dw, dh, dx, dy;
+          if (ir > cr) { // image wider
+            dw = cw; dh = Math.round(cw / ir); dx = 0; dy = Math.round((ch - dh)/2);
+          } else {
+            dh = ch; dw = Math.round(ch * ir); dy = 0; dx = Math.round((cw - dw)/2);
+          }
+          ex.drawImage(bgImg, dx, dy, dw, dh);
+        }
+        // then ink layer
+        ex.drawImage(canvas, 0, 0);
+        const url = exportCanvas.toDataURL('image/png');
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'whiteboard.png';
+        a.click();
+      });
+
+      // Canvas events (pointer = mouse/touch/pen)
+      canvas.addEventListener('pointerdown', pointerDown);
+      canvas.addEventListener('pointermove', pointerMove);
+      window.addEventListener('pointerup', pointerUp);
+
+      // Initial size + on resize
+      const ro = new ResizeObserver(resizeCanvas);
+      ro.observe(wrap);
+      resizeCanvas();
+
+      // Start with a blank history state so Undo has something to restore to
+      try { history.push(ctx.getImageData(0,0,canvas.width,canvas.height)); } catch(e){}
+    })();
+  </script>
 </body>
 </html>
-
-
-
